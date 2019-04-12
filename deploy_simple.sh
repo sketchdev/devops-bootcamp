@@ -1,6 +1,7 @@
 #!/bin/bash -xe
 
 # Set your username/userid here
-BOOTCAMP_USER_ID=devopsUser1
+# !!! CASE matters; make it all lowercase !!!
+BOOTCAMP_USER_ID=workshopuser#
 
-cp -R . simple-deploy-server.local/$BOOTCAMP_USER_ID/app
+cp -R . simple-deploy-server.local/$BOOTCAMP_USER_ID/devops-bootcamp/
