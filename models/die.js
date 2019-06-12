@@ -1,6 +1,12 @@
+const defaultSides = 6;
+
 class Die {
   constructor(numSides = 6) {
-    this.numSides = numSides;
+    if (Number(numSides) != numSides || numSides <= 0) {
+      this.numSides = defaultSides;
+    } else {
+      this.numSides = numSides;
+    }
   }
 
   // Getter
