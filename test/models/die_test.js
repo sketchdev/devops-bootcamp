@@ -20,4 +20,48 @@ describe('die attributes', () => {
     let die = new Die(20);
     die.sides.should.equal(20);
   });
+
+  // Test 3:
+  //   Validate that a die initialized with a negative number of sides
+  //   reports that it has the default number of sides
+  it('should return the default number of sides when negative is passed', () => {
+    let die = new Die();
+    die.sides.should.equal();
+  });
+
+  // Test 4:
+  //   Validate that a die initialized with 0 sides
+  //   reports that it has the default number of sides
+  it('should return the default number of sides when 0 is passed', () => {
+    let die = new Die();
+    die.sides.should.equal();
+  });
+
+  // Test 5:
+  //   Validate that a die initialized with non-numeric
+  //   reports that it has the default number of sides
+  it('should return the default number of sides when text is passed', () => {
+    let die = new Die();
+    die.sides.should.equal();
+  });
+
+  // Test 6:
+  //   Validate that rolling a 1-sided die always returns 1
+  it('should always return 1 when rolling a 1-sided die', () => {
+    let die = new Die();
+    die.roll().should.equal();
+  });
+
+  // Test 7:
+  //   Validate that the roll result is never higher or lower than
+  //   the number of sides on the die
+  it('should always return 1 or 2 when rolling a 2-sided die', () => {
+    let die = new Die();
+    for (let i = 0; i < 1000; i++) {
+      let result = die.roll();
+      // console.log(result);
+      result.should.be.above();
+      result.should.be.below();
+    }
+  });
 });
