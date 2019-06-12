@@ -4,6 +4,12 @@ global.should = chai.should();
 global.expect = chai.expect;
 
 
+/**
+ * More documentation on .should.match/include/equal/be.false/have/etc. can be found at:
+ *   https://www.chaijs.com/api/bdd/
+ */
+
+
 describe('die attributes', () => {
 
   // Test 1:
