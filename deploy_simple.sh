@@ -4,4 +4,4 @@
 # !!! CASE matters; make it all lowercase !!!
 BOOTCAMP_USER_ID=workshopuser#
 
-cp -R . simple-deploy-server.local/$BOOTCAMP_USER_ID/devops-bootcamp/
+cp -R . /c/mnt/deploy/$BOOTCAMP_USER_ID/devops-bootcamp/
