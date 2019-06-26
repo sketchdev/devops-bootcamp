@@ -4,4 +4,29 @@
 # !!! CASE matters; make it all lowercase !!!
 BOOTCAMP_USER_ID=workshopuser#
 
-cp -R . /c/mnt/deploy/$BOOTCAMP_USER_ID/devops-bootcamp/
+
+$DEPLOYMENT_DIR="/c/mnt/deploy/$BOOTCAMP_USER_ID/devops-bootcamp/"
+
+# Figure out if linux/mac or windows
+case `uname -s` in
+    Linux*)     type=mount;;
+    Darwin*)    type=mount;;
+    *)          type=manual
+esac
+
+# Ensure deployment folder is ready
+if [ ! -d "/path/to/dir" ]; then
+  if [ "$type" == "mount" ]; then
+    mkdir -p /c/mnt/deploy
+    apt-get update
+    apt-get install -y cifs-utils
+    mount -t cifs //webserver.local/deploy /c/mnt/deploy/ -o rw,user=devopssamba,pass=devopsbootcampshare
+  else
+    echo ""
+    echo "If this is a Windows-based machine, please ensure that the S:\ drive is mapped and loaded to the deployment server and try again."
+    echo ""
+    exit 2
+  fi
+fi
+
+cp -R . $DEPLOYMENT_DIR
