@@ -4,6 +4,10 @@
   "description": "Dice-Roller app for DevOps Bootcamp",
   "main": "app.js",
   "scripts": {
+    "flyway-bin": "FLYWAY_VER=`cat conf/flyway.js | grep version | awk '{print $2}' | sed \"s/'//g\"` && FLYWAY_PATH=\"node_modules/node-flywaydb/jlib/flyway-commandline-${FLYWAY_VER}/flyway-${FLYWAY_VER}\" && echo \"Path=${FLYWAY_PATH}\" && ${FLYWAY_PATH}/flyway",
+    "migrate": "flyway -c conf/flyway.js migrate",
+    "migrate-info": "flyway -c conf/flyway.js info",
+    "migrate-clean": "flyway -c conf/flyway.js clean",
     "start": "node app.js",
     "test": "node ./node_modules/mocha/bin/mocha ./test/**/*_test.js --exit"
   },
@@ -17,7 +21,8 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "node-flywaydb": "^2.0.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
