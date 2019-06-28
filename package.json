@@ -9,7 +9,7 @@
     "migrate-info": "flyway -c conf/flyway.js info",
     "migrate-clean": "flyway -c conf/flyway.js clean",
     "start": "node app.js",
-    "test": "node ./node_modules/mocha/bin/mocha ./test/**/*_test.js"
+    "test": "node ./node_modules/mocha/bin/mocha ./test/**/*_test.js --exit"
   },
   "keywords": [
     "nodejs",
