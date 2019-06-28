@@ -24,23 +24,23 @@ describe('roll', async () => {
 
   // Test 3:
   //   Validate that it saves to the database when a die is rolled
-  it.skip('should save the roll result on each roll', async () => {
-    await request(app).get('/roll?sides=13')
+  it('should save the roll result on each roll', async () => {
+    const rollResult = await request(app).get('/roll?sides=13')
         .expect(async (res) => {
           res.status.should.equal(200);
           res.text.should.match(/A die with 13 sides just rolled a/);
-
-          // query database for result & perform assertions
-          let rollResults = await db.any('SELECT * FROM roll_history;');
-          // console.log(rollResults);
-          rollResults.length.should.equal(1);
-
-          // assert result
-          const resultMessage = res.text;
-          let rollMatch = resultMessage.match(/A die with 13 sides just rolled a (\d+)/);
-          // console.log(rollMatch[1]);
-          rollResults[0].result.should.equal(rollMatch[1]);
         });
+
+    // query database for result & perform assertions
+    let rollHistories = await db.any('SELECT * FROM roll_history;');
+    // console.log(rollHistories);
+    rollHistories.length.should.equal(1);
+
+    // assert result
+    const resultMessage = rollResult.res.text;
+    let rollMatch = resultMessage.match(/A die with 13 sides just rolled a (\d+)/);
+    // console.log(rollMatch[1]);
+    rollHistories[0].result.toString().should.equal(rollMatch[1]);
   });
 
 });
