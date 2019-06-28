@@ -1,12 +1,5 @@
 require('../setup_test.js');
-const chai = require('chai');
 const { db } = require('../../lib/db');
-
-global.app = require('../../app.js').app;
-global.should = chai.should();
-global.expect = chai.expect;
-global.request = require('supertest');
-
 
 describe('roll', async () => {
 
