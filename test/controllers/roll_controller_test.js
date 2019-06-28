@@ -1,3 +1,4 @@
+require('../setup_test.js');
 const chai = require('chai');
 
 global.app = require('../../app.js').app;
@@ -29,6 +30,18 @@ describe('roll', async () => {
             // console.log(res.text);
           });
     }
+  });
+
+  // Test 3:
+  //   Validate that it saves to the database when a die is rolled
+  it('should save the roll result on each roll', async () => {
+    await request(app).get('/roll?sides=13')
+        .expect((res) => {
+          res.status.should.equal();
+          res.text.should.match();
+
+          // query database for result & perform assertions
+        });
   });
 
 });
