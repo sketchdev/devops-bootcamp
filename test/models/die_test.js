@@ -1,8 +1,5 @@
 require('../setup_test.js');
-const chai = require('chai');
 const Die = require('../../models/die');
-global.should = chai.should();
-global.expect = chai.expect;
 
 
 /**
