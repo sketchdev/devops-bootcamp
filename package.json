@@ -1,7 +1,7 @@
 {
   "name": "devopsmw",
   "version": "0.1.0",
-  "description": "Hello-World app for DevOps Midwest conference",
+  "description": "Dice-Roller app for DevOps Bootcamp",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
