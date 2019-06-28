@@ -1,3 +1,4 @@
+require('../setup_test.js');
 const chai = require('chai');
 
 global.app = require('../../app.js').app;
