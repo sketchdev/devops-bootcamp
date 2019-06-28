@@ -4,7 +4,8 @@ module.exports = {
     schemas: 'bootcampuser',
     locations: 'filesystem:sql',
     user: 'bootcampuser',
-    password: 'abc123def456'
+    password: 'abc123def456',
+    baselineOnMigrate: true
     // sqlMigrationSuffix: '.sql',  // deprecated with the newer beta version
   },
   version: '6.0.0-beta2'
