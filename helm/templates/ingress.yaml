@@ -1,37 +1,18 @@
-{{- if .Values.ingress.enabled -}}
-{{- $fullName := include "dieroll.fullname" . -}}
-{{- $ingressPath := .Values.ingress.path -}}
-{{- $ingressPort := .Values.service.externalport -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ $fullName }}
+  name: die-roll
   namespace: {{ .Values.metadata.namespace }}
-  labels:
-    app: {{ include "dieroll.name" . }}
-    chart: {{ include "dieroll.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-{{- with .Values.ingress.annotations }}
   annotations:
-{{ toYaml . | indent 4 }}
-{{- end }}
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+  labels:
+    app: die-roll
 spec:
-{{- if .Values.ingress.tls }}
-  tls:
-  {{- range .Values.ingress.tls }}
-    - hosts:
-      {{- range .hosts }}
-        - {{ . | quote }}
-      {{- end }}
-      secretName: {{ .secretName }}
-  {{- end }}
-{{- end }}
   rules:
     - http:
         paths:
-          - path: {{ $ingressPath }}
+          - path: /*
             backend:
-              serviceName: {{ $fullName }}
-              servicePort: {{ $ingressPort }}
-{{- end }}
+              serviceName: die-roll
+              servicePort: {{ .Values.service.externalport }}

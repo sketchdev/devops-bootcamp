@@ -1,20 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "dieroll.fullname" . }}
+  name: die-roll
   namespace: {{ .Values.metadata.namespace }}
-  labels:
-    app: {{ include "dieroll.name" . }}
-    chart: {{ include "dieroll.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
 spec:
-  type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.externalport }}
       targetPort: {{ .Values.service.internalport }}
       protocol: TCP
-      name: {{ include "dieroll.name" . }}
+  type: NodePort
   selector:
-    app: {{ include "dieroll.name" . }}
-    release: {{ .Release.Name }}
+    app: die-roll
