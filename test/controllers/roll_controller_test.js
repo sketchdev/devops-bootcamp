@@ -27,7 +27,7 @@ describe('roll', async () => {
 
   // Test 3:
   //   Validate that it saves to the database when a die is rolled
-  it('should save the roll result on each roll', async () => {
+  it.skip('should save the roll result on each roll', async () => {
     await request(app).get('/roll?sides=13')
         .expect((res) => {
           res.status.should.equal();
