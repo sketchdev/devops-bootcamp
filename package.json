@@ -24,7 +24,8 @@
     "express": "^4.17.1",
     "node-flywaydb": "^2.0.1",
     "pg": "^7.11.0",
-    "pg-promise": "^8.7.2"
+    "pg-promise": "^8.7.2",
+    "unleash-client": "^3.2.8"
   },
   "devDependencies": {
     "chai": "^4.2.0",
