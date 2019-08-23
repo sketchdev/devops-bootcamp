@@ -42,7 +42,6 @@ describe('roll', async () => {
 describe('test data management', async () => {
   beforeEach(async () => {
     await deleteData();
-    company = await seedCompany();
   });
 
   // Test 3b:
@@ -68,7 +67,7 @@ describe('test data management', async () => {
       rollHistories.length.should.equal(1);
       rollHistories[0].die_sides.should.equal(rollHistory.die_sides);
       rollHistories[0].result.should.equal(rollHistory.result);
-      rollHistories[0].roll_time.should.equal(rollHistory.roll_time);
+      rollHistories[0].roll_time.getTime().should.equal(rollHistory.roll_time.getTime());
     })
   });
 });
