@@ -32,3 +32,5 @@ if [ ! -d $DEPLOYMENT_DIR ]; then
 fi
 
 cp -R . $DEPLOYMENT_DIR
+cd $DEPLOYMENT_DIR
+npm install
