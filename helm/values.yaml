@@ -3,18 +3,16 @@
 # Declare variables to be passed into your templates.
 
 metadata:
-  namespace: workshopusern
+  namespace: workshopuser#
+
+appVersion: "1.0"
 
 replicas:
   replicaCount: 1
-  min: 2
-  max: 4
-  targetCpuPercent: 50
 
 image:
-  repository: 686567993080.dkr.ecr.us-east-1.amazonaws.com/devopsbootcampuser2
+  repository: 686567993080.dkr.ecr.us-east-1.amazonaws.com/devopsbootcampuser#
   tag: latest
-  pullPolicy: Always
 
 nameOverride: ""
 fullnameOverride: ""
@@ -27,28 +25,7 @@ service:
 
 ingress:
   enabled: true
-  annotations:
-    kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/scheme: internet-facing
   path: /*
   hosts:
-    - devopskube.local
+    - k8s.sketchdev.io
   tls: []
-
-resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #  cpu: 100m
-  #  memory: 128Mi
-  # requests:
-  #  cpu: 100m
-  #  memory: 128Mi
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}

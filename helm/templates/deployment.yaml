@@ -1,14 +1,25 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: die-roll-deployment
+  name: {{ template "dieroll.fullname" . }}
   namespace: {{ .Values.metadata.namespace }}
+  labels:
+    app: die-roll
+    release: {{ .Release.Name }}
 spec:
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
   replicas: {{ .Values.replicas.replicaCount }}
+  selector:
+    matchLabels:
+      app: die-roll
+      release: {{ .Release.Name }}
   template:
     metadata:
       labels:
         app: die-roll
+        release: {{ .Release.Name }}
     spec:
       containers:
       - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
