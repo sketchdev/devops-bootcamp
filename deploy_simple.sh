@@ -6,7 +6,7 @@ BOOTCAMP_USER_ID=workshopuser#
 
 
 DEPLOYMENT_MOUNT="../deploy"
-DEPLOYMENT_DIR="$DEPLOYMENT_MOUNT/$BOOTCAMP_USER_ID/devops-bootcamp/"
+DEPLOYMENT_DIR="$DEPLOYMENT_MOUNT/$BOOTCAMP_USER_ID/"
 
 # Figure out if linux/mac or windows
 case `uname -s` in
@@ -31,6 +31,6 @@ if [ ! -d $DEPLOYMENT_DIR ]; then
   fi
 fi
 
-cp -R . $DEPLOYMENT_DIR
-cd $DEPLOYMENT_DIR
 npm install
+tar -czf ../deployment.tgz .
+mv ../deployment.tgz $DEPLOYMENT_DIR
